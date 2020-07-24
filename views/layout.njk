@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Material Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">  
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+
+    {% block head %}<title>GYM Control</title>{% endblock %}
+</head>
+<body>
+    <header class="header-nav">       
+        <nav>
+            <ul class="links">
+                <li><a href="/aulas">Instructors</a></li>
+                <li><a href="/curso">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %}     
+</body>
+</html>
