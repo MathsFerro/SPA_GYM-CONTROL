@@ -6,10 +6,13 @@ const server = express()
 
 const routes = require('./routes')
 
+// Middlewares -> Intercepta do ponto A para o ponto B, colocando coisas no caminho 
+// Usamos o urlencoded para passar os dados 
+server.use(express.urlencoded({ extended: true }))
+
 server.use(express.static("public"))
 server.use(express.static("public/img"))
 
-// Middlewares -> Intercepta do ponto A para o ponto B, colocando coisas no caminho 
 server.use(routes)
 
 server.set("view engine", "njk")
