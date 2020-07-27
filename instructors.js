@@ -1,7 +1,24 @@
 // Modulo do próprio node
 const fs = require('fs')
 const data = require('./data.json')
-const { age } = require('./utils')
+const { age, date } = require('./utils')
+
+// edit
+exports.edit = (req, res) => {
+    const { id } = req.params
+    
+    const foundInstructor = data.instructors.find((instructor) => instructor.id == id)
+
+    if(!foundInstructor)
+        return res.send('Instructor not found')
+
+    const instructor = {
+        ...foundInstructor,
+        birth: date(foundInstructor.birth)
+    }
+
+    return  res.render('instructors/edit', { instructor })
+}
 
 // show
 exports.show = (req, res) => {
@@ -21,7 +38,7 @@ exports.show = (req, res) => {
         ...foundInstructor,
         age: age(foundInstructor.birth),
         services: foundInstructor.services.split(","),
-        created_at: new Intl.DateTimeFormat('en-US').format(foundInstructor.created_at)
+        created_at: new Intl.DateTimeFormat("en-US").format(foundInstructor.created_at)
     }
 
     return res.render("instructors/show", { instructor })
